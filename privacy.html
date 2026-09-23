@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · AMUX Pulse</title>
+<style>
+  :root { --bg:#070707; --surface:#111; --line:#222; --text:#f2f2f2; --soft:#b5b5b5; --muted:#7a7a7a; --lime:#DBFF3C; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.6; }
+  main { max-width:720px; margin:0 auto; padding:48px 20px 96px; }
+  .eyebrow { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; letter-spacing:2px; color:var(--lime); text-transform:uppercase; }
+  h1 { font-size:34px; line-height:1.1; margin:10px 0 6px; letter-spacing:-0.5px; }
+  .updated { color:var(--muted); font-size:13px; margin-bottom:36px; }
+  h2 { font-size:19px; margin:36px 0 10px; }
+  p, li { color:var(--soft); font-size:15px; }
+  ul { padding-left:22px; margin:8px 0; }
+  li { margin:4px 0; }
+  strong { color:var(--text); }
+  a { color:var(--lime); }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); color:var(--soft); vertical-align:top; }
+  th { color:var(--text); font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:16px 0; }
+  footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+<main>
+  <span class="eyebrow">AMUX Pulse</span>
+  <h1>Privacy Policy</h1>
+  <!-- Published 23 September 2026. Controller details and processor list verified against the codebase and the production database on that date. Health types derived from
+     HealthAuthorization.readTypes (ios/AMUXPulse/Health/HealthAuthorization.swift); AI fields from
+     src/features/aiSurfaces/context/envelope.ts, src/features/recoveryCoach/lib/context.ts and the
+     deny-list in supabase/functions/recovery-coach/policy.ts (hasForbiddenContextKey). -->
+  <p class="updated">Updated: 23 September 2026 (previous version effective 28 July 2026)</p>
+
+  <p>AMUX Pulse ("AMUX", "we") is a training and recovery app for iOS. This policy explains exactly what data the app collects, why, and what happens to it. Short version: your data powers your own training engine. We do not sell it, we do not show ads, and we do not use it for advertising or tracking of any kind.</p>
+
+  <h2>1. Data we collect</h2>
+
+  <h2 style="font-size:15px; margin-top:20px;">Health and fitness data (Apple Health)</h2>
+  <p>With your explicit permission via Apple's HealthKit consent screen, AMUX Pulse reads the following data types:</p>
+  <ul>
+    <li><strong>Workouts</strong>: training load and your session history</li>
+    <li><strong>Heart rate, resting heart rate, walking heart-rate average, and one-minute heart-rate recovery</strong>: workout intensity and recovery baselines</li>
+    <li><strong>Heart-rate variability (HRV)</strong>: recovery scoring</li>
+    <li><strong>Sleep analysis</strong>: overnight recovery feeding your readiness score</li>
+    <li><strong>Active energy, resting energy, walking/running distance, and step count</strong>: training load and daily movement</li>
+    <li><strong>Activity rings, exercise minutes, and stand time</strong>: daily movement, exercise, and stand progress</li>
+    <li><strong>VO2 max</strong>: an aerobic fitness trend, shown as an estimate</li>
+    <li><strong>Blood oxygen, respiratory rate, body temperature, and sleeping wrist temperature</strong>: overnight vitals compared with your own baseline</li>
+  </ul>
+  <p>Apple does not tell apps which of these you allowed. AMUX works with whatever you share and never fills a missing value with a guess.</p>
+  <p>The app writes one data type back to Apple Health: <strong>workout summaries</strong> for sessions you record.</p>
+  <div class="card">
+    <p><strong>Health data rules we hold ourselves to:</strong> health data is used only to compute your recovery, readiness, and training-load metrics. It is never used for advertising, marketing, or data mining, never sold, never shared with data brokers, and never stored in iCloud by us. You can revoke Health access at any time in iOS Settings → Privacy &amp; Security → Health.</p>
+  </div>
+
+  <h2 style="font-size:15px;">Location data</h2>
+  <p>With your permission, the app uses precise location <strong>during runs</strong> to record your route, distance, and pace, including in the background while a tracked session is active so your run keeps recording with the screen locked. Routes are stored with your training history. Location is never collected outside of activity tracking.</p>
+
+  <h2 style="font-size:15px;">Bluetooth heart-rate sensors</h2>
+  <p>With your permission, the app connects to Bluetooth heart-rate sensors such as a chest strap, or a WHOOP band with Heart Rate Broadcast switched on, and records the heart rate they report during a session. This runs in the background while a session is active so the reading continues with the screen locked. Sensor data is stored with that session.</p>
+
+  <h2 style="font-size:15px;">Apple Watch</h2>
+  <p>If you use the AMUX Pulse watch app, the watch records the session and uploads it to our servers itself, over Wi-Fi or cellular, without going through your iPhone. To do that, your iPhone issues the watch its own credential, and we store an identifier for that watch so you can see and revoke it. Revoking a watch stops it uploading.</p>
+
+  <h2 style="font-size:15px;">Photos and camera</h2>
+  <p>If you set a profile picture, the image you choose or take is uploaded to our storage and linked to your account. If you save a share card, the app writes that image to your photo library. The app never reads your photo library other than the picture you pick.</p>
+
+  <h2 style="font-size:15px;">Account data</h2>
+  <p>Email address, display name/handle, and sign-in identity (Apple, Google, Whop, or email/password). Used solely to operate your account and sync your training data across your devices.</p>
+
+  <h2 style="font-size:15px;">Purchase data</h2>
+  <p>Subscription status and entitlement history (AMUX Pro), so the app knows which features to unlock. Payment card details are handled entirely by Apple or Whop; we never see them.</p>
+
+  <h2 style="font-size:15px;">Diagnostics</h2>
+  <p>Crash reports and performance data, linked to your account, used only to find and fix bugs.</p>
+
+  <h2>2. Service providers (processors)</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data involved</th></tr>
+    <tr><td>Supabase</td><td>Authentication and cloud database</td><td>Account data, training sessions, profile, health data you allow from Apple Health, and metrics derived from it</td></tr>
+    <tr><td>RevenueCat</td><td>Subscription management (App Store purchases)</td><td>Anonymous app-user ID, purchase history</td></tr>
+    <tr><td>Whop</td><td>Optional web membership purchases and sign-in</td><td>Account email, membership status</td></tr>
+    <tr><td>Anthropic (Claude)</td><td>AI Recovery Coach and AI training summaries</td><td>See AI section below</td></tr>
+    <tr><td>Resend</td><td>Sending you trial and renewal reminder emails</td><td>Your email address, and your trial or renewal dates</td></tr>
+    <tr><td>Expo</td><td>Delivering over-the-air app updates</td><td>Your app's version and update channel. No account data</td></tr>
+    <tr><td>Polar</td><td>Optional Polar wearable connection</td><td>When you connect Polar, we receive your cardio fitness (VO2 max), maximum and resting heart rate, aerobic and anaerobic thresholds, height, weight, and your last 30 days of workouts. We send Polar an internal AMUX account identifier so it knows which account to sync. Disconnecting deletes the stored data and the registration on Polar's side.</td></tr>
+    <tr><td>Oura and WHOOP</td><td>Optional wearable connections</td><td>When you connect one, we receive the recovery, sleep and workout metrics that provider exposes. Disconnecting deletes the stored data.</td></tr>
+    <tr><td>Sentry</td><td>Crash and performance monitoring</td><td>Crash and performance data, linked to your account ID and email address. Sign-in codes, tokens, passwords and API keys are stripped before anything is sent, and performance tracing is off.</td></tr>
+    <tr><td>Mapbox</td><td>Map tiles, snapping your route to paths, and the watch route thumbnail</td><td>Map tile requests, and your GPS coordinates with their timestamps while a run is recording and when it is saved</td></tr>
+  </table>
+  <p>Each provider processes data only on our instructions to run the service. None of them may use your data for their own advertising.</p>
+
+  <h2>3. AI processing disclosure</h2>
+  <p>AI is off until you turn it on. Nothing is sent to an AI provider until you accept the AI consent notice in the app, and you can withdraw that consent at any time from the same place.</p>
+  <p>Once you opt in, these features send data to <strong>Anthropic</strong> (Claude), acting as our data processor:</p>
+  <ul>
+    <li><strong>Recovery Coach</strong>: the chat, when you send a message</li>
+    <li><strong>Weekly review</strong>: a read-back of your training week on the Data tab</li>
+    <li><strong>Pre-session briefing</strong>: a short note before a planned session</li>
+    <li><strong>Calibration coach</strong>: guidance while your baselines are still being learned</li>
+    <li><strong>Post-race debrief</strong>: a review after a race day</li>
+  </ul>
+  <p><strong>What is sent:</strong> a compact summary built on your phone, not your raw data. Depending on the feature it contains your question (for the coach), your program, week and race phase, your readiness score and its main drivers, your training load, your latest HRV and sleep values and their trend, totals and short summaries of recent sessions (type, date, duration, distance, pace, load, effort, and post-workout check-in flags such as soreness), what is planned for tomorrow, which data is missing, the goal and preferences you set, safety flags from your questionnaire (for example a recent injury or medication that affects heart rate), and your body weight rounded to a whole number.</p>
+  <p><strong>What is never sent:</strong> GPS routes or location coordinates, your email address, your date of birth, raw heart-rate samples, or notes you write. Our server rejects any AI request that contains these fields.</p>
+  <p>Anthropic does <strong>not</strong> train models on this data. Anthropic may retain API inputs for up to 30 days, solely for abuse monitoring, after which they are deleted. You can use the entire app without ever turning AI on.</p>
+
+  <h2>4. No tracking, no ads</h2>
+  <p>AMUX Pulse contains no advertising, no third-party ad SDKs, and does not "track" you as defined by Apple's App Tracking Transparency framework: we never link your data with third-party data for advertising, and we never share data with data brokers.</p>
+
+  <h2>5. Retention and deletion</h2>
+  <ul>
+    <li><strong>Export:</strong> download your training sessions any time in the app: Settings → Privacy &amp; data → Export data.</li>
+    <li><strong>Delete:</strong> permanently delete your account and all cloud data in the app: Settings → Privacy &amp; data → Delete account. Deletion cascades through every server-side record (profile, sessions, entitlements) and cannot be undone.</li>
+    <li>Data on your device (and anything you wrote to Apple Health) stays under your control and can be removed by deleting the app or editing Apple Health.</li>
+    <li>Deleting your account does not cancel an active Apple or Whop subscription. Cancel those with Apple (Settings → Apple ID → Subscriptions) or Whop directly.</li>
+  </ul>
+
+  <h2>6. Your choices</h2>
+  <ul>
+    <li>Every permission (Health, location, Bluetooth, notifications) is optional and requested only when the related feature needs it. The app works without them, with reduced functionality.</li>
+    <li>Change permissions any time in iOS Settings → AMUX Pulse.</li>
+    <li>Questions or privacy requests: <a href="mailto:amuxpulse@gmail.com">amuxpulse@gmail.com</a>.</li>
+  </ul>
+
+  <h2>7. Children</h2>
+  <p>AMUX Pulse is not directed at children. You must be at least 16 to use the app, and the AI features are available only to users aged 18 or over, which the app enforces before any AI request is made. We do not knowingly collect data from anyone below these ages. If you believe a child has given us data, write to us and we will delete it.</p>
+
+  <h2>8. Your rights, and the legal basis we rely on</h2>
+
+  <p>This section applies to everyone, and it is what European data protection law (the GDPR) requires us to tell you.</p>
+
+  <h2 style="font-size:15px;">Who is responsible for your data</h2>
+  <div class="card">
+    <p>The data controller is <strong>"AMUX" Ltd. (UIC 208410829)</strong>, Iskar 5, Laka, Bulgaria, Bulgaria. You can reach us about anything in this policy at <a href="mailto:amuxpulse@gmail.com">amuxpulse@gmail.com</a>. We have not appointed a Data Protection Officer, because we are not required to.</p>
+  </div>
+
+  <h2 style="font-size:15px;">Why we are allowed to process your data</h2>
+  <table>
+    <tr><th>What</th><th>Why</th><th>Legal basis</th></tr>
+    <tr><td>Your account, sync, and subscription</td><td>To give you the service you signed up for</td><td>Performance of a contract, Article 6(1)(b)</td></tr>
+    <tr><td>Health and fitness data, including anything from Apple Health or a wearable</td><td>To compute your readiness, recovery and training load</td><td><strong>Your explicit consent, Article 9(2)(a)</strong>, together with Article 6(1)(a)</td></tr>
+    <tr><td>Precise location during a run</td><td>To record your route, distance and pace</td><td>Your consent, Article 6(1)(a)</td></tr>
+    <tr><td>Sending a summary to an AI provider</td><td>To generate the AI coach and AI summaries</td><td>Your consent, Article 6(1)(a), and Article 9(2)(a) because the summary contains health data</td></tr>
+    <tr><td>Crash and performance diagnostics</td><td>To find and fix faults</td><td>Our legitimate interest in a working app, Article 6(1)(f)</td></tr>
+  </table>
+  <p>Health data is <strong>special category data</strong> under Article 9. We process it only because you explicitly agreed, and only to compute your own training metrics. If you withdraw that consent, we stop.</p>
+
+  <h2 style="font-size:15px;">How long we keep it</h2>
+  <ul>
+    <li><strong>Your account, training history, and health metrics:</strong> until you delete your account. We do not expire your training history while your account is open, because its value is that it is long.</li>
+    <li><strong>Anything sent to the AI provider:</strong> up to 30 days at Anthropic for abuse monitoring, then deleted. Not used to train models.</li>
+    <li><strong>Crash and performance diagnostics:</strong> 90 days, then deleted automatically. Diagnostics are processed in the European Union.</li>
+    <li><strong>After you delete your account:</strong> server-side records are removed immediately. Backups roll off within 30 days.</li>
+  </ul>
+
+  <h2 style="font-size:15px;">Your rights</h2>
+  <p>You can ask us to do any of the following, free of charge, and we will answer within one month:</p>
+  <ul>
+    <li><strong>See your data</strong> (access). Export is built into the app: Settings, then Privacy &amp; data, then Export data.</li>
+    <li><strong>Correct it</strong> (rectification) if something is wrong.</li>
+    <li><strong>Delete it</strong> (erasure). Also built in: Settings, then Privacy &amp; data, then Delete account.</li>
+    <li><strong>Get a portable copy</strong> (portability) in a machine-readable format.</li>
+    <li><strong>Restrict or object to</strong> processing, including our legitimate-interest use of diagnostics.</li>
+    <li><strong>Withdraw consent</strong> at any time, for Health, location, or AI, separately. Withdrawing is as easy as giving it, and it does not make our earlier processing unlawful.</li>
+  </ul>
+
+  <h2 style="font-size:15px;">If you are unhappy with how we handled it</h2>
+  <p>Write to us first and we will try to fix it. You also have the right to complain to your national data protection authority. Ours is the Bulgarian <strong>Commission for Personal Data Protection</strong> (Комисия за защита на личните данни), 2 Prof. Tsvetan Lazarov Blvd, Sofia 1592, Bulgaria, <a href="https://www.cpdp.bg">cpdp.bg</a>. If you live elsewhere in the EU or the UK, you can complain to your own authority instead.</p>
+
+  <h2 style="font-size:15px;">Sending data outside the EU</h2>
+  <p>Your account and training data are stored in the European Union, in Supabase's Paris region. Crash diagnostics are processed in the European Union. Some of our other providers process data in the United States: <strong>Anthropic</strong> (only if you turn AI on), <strong>RevenueCat</strong>, <strong>Mapbox</strong>, <strong>Resend</strong>, <strong>Whop</strong>, and <strong>Expo</strong>. Those transfers rely on the European Commission's Standard Contractual Clauses, or on the EU-US Data Privacy Framework where that provider is certified under it. You can ask us for a copy of the safeguards.</p>
+
+  <h2 style="font-size:15px;">Data we receive about you from someone else</h2>
+  <p>If you connect Polar, Oura or WHOOP, we receive fitness and recovery data about you from that provider, as listed in the provider table above. You start that by connecting the account, and you stop it by disconnecting.</p>
+
+  <h2 style="font-size:15px;">Automated decisions</h2>
+  <p>The app computes scores and adapts your plan automatically, and the AI features generate text. None of this produces a legal effect or a similarly significant effect on you within the meaning of Article 22, and no human-reviewed decision is made about you. The guidance is training guidance, and it is not medical advice.</p>
+
+  <h2>9. Changes</h2>
+  <p>If this policy changes materially, we will update this page and note it in the app's release notes. The effective date above always reflects the current version.</p>
+
+  <footer>
+    AMUX Pulse · <a href="mailto:amuxpulse@gmail.com">amuxpulse@gmail.com</a> · <a href="/terms">Terms of Use</a> · <a href="/support">Support</a>
+  </footer>
+</main>
+</body>
+</html>

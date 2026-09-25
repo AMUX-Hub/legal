@@ -33,7 +33,7 @@
      HealthAuthorization.readTypes (ios/AMUXPulse/Health/HealthAuthorization.swift); AI fields from
      src/features/aiSurfaces/context/envelope.ts, src/features/recoveryCoach/lib/context.ts and the
      deny-list in supabase/functions/recovery-coach/policy.ts (hasForbiddenContextKey). -->
-  <p class="updated">Updated: 23 September 2026 (previous version effective 28 July 2026)</p>
+  <p class="updated">Updated: 25 September 2026 (previous version effective 23 September 2026)</p>
 
   <p>AMUX Pulse ("AMUX", "we") is a training and recovery app for iOS. This policy explains exactly what data the app collects, why, and what happens to it. Short version: your data powers your own training engine. We do not sell it, we do not show ads, and we do not use it for advertising or tracking of any kind.</p>
 
@@ -95,7 +95,7 @@
   <p>Each provider processes data only on our instructions to run the service. None of them may use your data for their own advertising.</p>
 
   <h2>3. AI processing disclosure</h2>
-  <p>AI is off until you turn it on. Nothing is sent to an AI provider until you accept the AI consent notice in the app, and you can withdraw that consent at any time from the same place.</p>
+  <p>AI is off until you turn it on. Nothing is sent to an AI provider until you accept the AI consent notice in the app. You can see, grant or withdraw that consent at any time in <strong>Profile → Settings → Privacy &amp; data → AI answers</strong>, and also from the coach's info panel. Withdrawing takes effect immediately for the coach and every AI card.</p>
   <p>Once you opt in, these features send data to <strong>Anthropic</strong> (Claude), acting as our data processor:</p>
   <ul>
     <li><strong>Recovery Coach</strong>: the chat, when you send a message</li>
@@ -104,8 +104,23 @@
     <li><strong>Calibration coach</strong>: guidance while your baselines are still being learned</li>
     <li><strong>Post-race debrief</strong>: a review after a race day</li>
   </ul>
-  <p><strong>What is sent:</strong> a compact summary built on your phone, not your raw data. Depending on the feature it contains your question (for the coach), your program, week and race phase, your readiness score and its main drivers, your training load, your latest HRV and sleep values and their trend, totals and short summaries of recent sessions (type, date, duration, distance, pace, load, effort, and post-workout check-in flags such as soreness), what is planned for tomorrow, which data is missing, the goal and preferences you set, safety flags from your questionnaire (for example a recent injury or medication that affects heart rate), and your body weight rounded to a whole number.</p>
-  <p><strong>What is never sent:</strong> GPS routes or location coordinates, your email address, your date of birth, raw heart-rate samples, or notes you write. Our server rejects any AI request that contains these fields.</p>
+  <p><strong>What is sent:</strong> a compact summary built on your phone, not your raw data. Depending on the feature it contains:</p>
+  <ul>
+    <li>your question (coach chat only)</li>
+    <li><strong>readiness:</strong> your readiness score, its band and the main reasons behind it</li>
+    <li><strong>training load:</strong> acute and chronic load and your acute:chronic workload ratio (ACWR)</li>
+    <li><strong>heart rate variability:</strong> latest value, 7-day average, change and trend</li>
+    <li><strong>sleep:</strong> hours, efficiency, short nights, last bedtime and trend</li>
+    <li><strong>recent sessions:</strong> totals for the last 30 days and short summaries of up to eight recent sessions (date, type, title, duration, distance, average and maximum heart rate, load, and post-workout check-in flags such as soreness)</li>
+    <li><strong>body and physiology:</strong> body weight rounded to a whole kilogram, resting and threshold heart rate, threshold pace</li>
+    <li><strong>fitness estimates:</strong> your VO2 max estimate, its range and trend, VDOT, race time predictions, and recent 5K and 10K times or test distances</li>
+    <li><strong>race results</strong> (post-race debrief): distance, time, pace, per-kilometre splits, pace fade, heart-rate drift, effort rating (RPE), and predicted versus actual time</li>
+    <li><strong>training profile:</strong> the goal, level, weekly availability and recovery priorities you set, and safety flags from your questionnaire (for example a recent injury, medication that affects heart rate, or a medical clearance flag)</li>
+    <li><strong>nutrition preferences:</strong> diet style and dietary restrictions</li>
+    <li><strong>your plan:</strong> program, week, race phase and days to race, planned sessions and their targets (pace, zone, exercises), and your progress this week</li>
+    <li><strong>data sources:</strong> which sources are connected (for example Apple Health) and which data is missing</li>
+  </ul>
+  <p><strong>What is never sent:</strong> your name, your email address, your date of birth, GPS routes or location coordinates, raw heart-rate samples, raw Apple Health history, or notes you write.</p>
   <p>Anthropic does <strong>not</strong> train models on this data. Anthropic may retain API inputs for up to 30 days, solely for abuse monitoring, after which they are deleted. You can use the entire app without ever turning AI on.</p>
 
   <h2>4. No tracking, no ads</h2>
@@ -127,7 +142,7 @@
   </ul>
 
   <h2>7. Children</h2>
-  <p>AMUX Pulse is not directed at children. You must be at least 16 to use the app, and the AI features are available only to users aged 18 or over, which the app enforces before any AI request is made. We do not knowingly collect data from anyone below these ages. If you believe a child has given us data, write to us and we will delete it.</p>
+  <p>AMUX Pulse is not directed at children. You must be at least 16 to use the app. The AI features are available only to users aged 18 or over: the app checks the age on your profile before every AI request, including the coach and all AI cards, and our server keeps a record of the birth year you give. We do not knowingly collect data from anyone below these ages. If you believe a child has given us data, write to us and we will delete it.</p>
 
   <h2>8. Your rights, and the legal basis we rely on</h2>
 

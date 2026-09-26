@@ -33,7 +33,7 @@
      HealthAuthorization.readTypes (ios/AMUXPulse/Health/HealthAuthorization.swift); AI fields from
      src/features/aiSurfaces/context/envelope.ts, src/features/recoveryCoach/lib/context.ts and the
      deny-list in supabase/functions/recovery-coach/policy.ts (hasForbiddenContextKey). -->
-  <p class="updated">Updated: 25 September 2026 (previous version effective 23 September 2026)</p>
+  <p class="updated">Updated: 26 September 2026 (previous version effective 25 September 2026)</p>
 
   <p>AMUX Pulse ("AMUX", "we") is a training and recovery app for iOS. This policy explains exactly what data the app collects, why, and what happens to it. Short version: your data powers your own training engine. We do not sell it, we do not show ads, and we do not use it for advertising or tracking of any kind.</p>
 
@@ -78,6 +78,10 @@
   <h2 style="font-size:15px;">Diagnostics</h2>
   <p>Crash reports and performance data, linked to your account, used only to find and fix bugs.</p>
 
+  <h2 style="font-size:15px;">Feedback and support reports</h2>
+  <p>When you send a report from <strong>Feedback &amp; support</strong> (in Settings, in Help &amp; about, or from "Report response" on the AI coach), we receive what you write, the type you chose (bug, idea, question or other), where in the app you opened the form, and a screenshot if you attach one. If you turn on "You can email me about this", we also receive the email address you give, so we can reply.</p>
+  <p>To help us reproduce a problem, the report also carries your app version and build, your iOS version, whether you are on the free plan or AMUX Pro, your sync status, and the last few technical events the app logged. Those events are stripped of sign-in tokens, keys and link parameters on your phone before they are sent, and they contain no health data. Reports are linked to your account and are used only to fix problems, improve the app and answer you.</p>
+
   <h2>2. Service providers (processors)</h2>
   <table>
     <tr><th>Provider</th><th>Purpose</th><th>Data involved</th></tr>
@@ -85,7 +89,9 @@
     <tr><td>RevenueCat</td><td>Subscription management (App Store purchases)</td><td>Anonymous app-user ID, purchase history</td></tr>
     <tr><td>Whop</td><td>Optional web membership purchases and sign-in</td><td>Account email, membership status</td></tr>
     <tr><td>Anthropic (Claude)</td><td>AI Recovery Coach and AI training summaries</td><td>See AI section below</td></tr>
-    <tr><td>Resend</td><td>Sending you trial and renewal reminder emails</td><td>Your email address, and your trial or renewal dates</td></tr>
+    <tr><td>Resend</td><td>Sending you trial and renewal reminder emails, and sending each feedback report to our team's inbox</td><td>Your email address and your trial or renewal dates. For a feedback report: its content as described in section 1, your account email, and a link to any screenshot that stops working after one hour</td></tr>
+    <tr><td>Telegram</td><td>Notifying our team the moment a feedback report arrives</td><td>The first part of the report, its type, your app version and plan, and your reply email if you allowed a reply</td></tr>
+    <tr><td>Notion</td><td>Our internal list of feedback reports, where we track fixes</td><td>The report content as described in section 1, your account email, and a link to any screenshot that stops working after one hour</td></tr>
     <tr><td>Expo</td><td>Delivering over-the-air app updates</td><td>Your app's version and update channel. No account data</td></tr>
     <tr><td>Polar</td><td>Optional Polar wearable connection</td><td>When you connect Polar, we receive your cardio fitness (VO2 max), maximum and resting heart rate, aerobic and anaerobic thresholds, height, weight, and your last 30 days of workouts. We send Polar an internal AMUX account identifier so it knows which account to sync. Disconnecting deletes the stored data and the registration on Polar's side.</td></tr>
     <tr><td>Oura and WHOOP</td><td>Optional wearable connections</td><td>When you connect one, we receive the recovery, sleep and workout metrics that provider exposes. Disconnecting deletes the stored data.</td></tr>
@@ -161,6 +167,7 @@
     <tr><td>Precise location during a run</td><td>To record your route, distance and pace</td><td>Your consent, Article 6(1)(a)</td></tr>
     <tr><td>Sending a summary to an AI provider</td><td>To generate the AI coach and AI summaries</td><td>Your consent, Article 6(1)(a), and Article 9(2)(a) because the summary contains health data</td></tr>
     <tr><td>Crash and performance diagnostics</td><td>To find and fix faults</td><td>Our legitimate interest in a working app, Article 6(1)(f)</td></tr>
+    <tr><td>Feedback and support reports you send</td><td>To investigate what you reported, improve the app, and reply if you asked us to</td><td>Our legitimate interest in answering you and fixing the app, Article 6(1)(f). The reply email only if you turn on "You can email me about this", Article 6(1)(a)</td></tr>
   </table>
   <p>Health data is <strong>special category data</strong> under Article 9. We process it only because you explicitly agreed, and only to compute your own training metrics. If you withdraw that consent, we stop.</p>
 
@@ -169,6 +176,7 @@
     <li><strong>Your account, training history, and health metrics:</strong> until you delete your account. We do not expire your training history while your account is open, because its value is that it is long.</li>
     <li><strong>Anything sent to the AI provider:</strong> up to 30 days at Anthropic for abuse monitoring, then deleted. Not used to train models.</li>
     <li><strong>Crash and performance diagnostics:</strong> 90 days, then deleted automatically. Diagnostics are processed in the European Union.</li>
+    <li><strong>Feedback reports:</strong> kept while they help us fix or improve the app. When you delete your account, we delete your screenshots and the reply email you gave, and the report is no longer linked to your account. Copies already delivered to our team's inbox, team chat and issue list are not removed automatically; write to us and we will delete them.</li>
     <li><strong>After you delete your account:</strong> server-side records are removed immediately. Backups roll off within 30 days.</li>
   </ul>
 
@@ -187,7 +195,7 @@
   <p>Write to us first and we will try to fix it. You also have the right to complain to your national data protection authority. Ours is the Bulgarian <strong>Commission for Personal Data Protection</strong> (Комисия за защита на личните данни), 2 Prof. Tsvetan Lazarov Blvd, Sofia 1592, Bulgaria, <a href="https://www.cpdp.bg">cpdp.bg</a>. If you live elsewhere in the EU or the UK, you can complain to your own authority instead.</p>
 
   <h2 style="font-size:15px;">Sending data outside the EU</h2>
-  <p>Your account and training data are stored in the European Union, in Supabase's Paris region. Crash diagnostics are processed in the European Union. Some of our other providers process data in the United States: <strong>Anthropic</strong> (only if you turn AI on), <strong>RevenueCat</strong>, <strong>Mapbox</strong>, <strong>Resend</strong>, <strong>Whop</strong>, and <strong>Expo</strong>. Those transfers rely on the European Commission's Standard Contractual Clauses, or on the EU-US Data Privacy Framework where that provider is certified under it. You can ask us for a copy of the safeguards.</p>
+  <p>Your account and training data are stored in the European Union, in Supabase's Paris region. Crash diagnostics are processed in the European Union. Some of our other providers process data outside the European Union, mainly in the United States: <strong>Anthropic</strong> (only if you turn AI on), <strong>RevenueCat</strong>, <strong>Mapbox</strong>, <strong>Resend</strong>, <strong>Whop</strong>, <strong>Expo</strong>, and, for feedback reports only, <strong>Telegram</strong> and <strong>Notion</strong>. Those transfers rely on the European Commission's Standard Contractual Clauses, or on the EU-US Data Privacy Framework where that provider is certified under it. You can ask us for a copy of the safeguards.</p>
 
   <h2 style="font-size:15px;">Data we receive about you from someone else</h2>
   <p>If you connect Polar, Oura or WHOOP, we receive fitness and recovery data about you from that provider, as listed in the provider table above. You start that by connecting the account, and you stop it by disconnecting.</p>

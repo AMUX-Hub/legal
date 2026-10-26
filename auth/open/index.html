@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Open AMUX Pulse</title>
+    <style>
+      :root {
+        --bg: #fff;
+        --surface: #f5f6f4;
+        --line: #e3e5e5;
+        --text: #17191b;
+        --soft: #565c61;
+        --muted: #656b70;
+        --volt: #dbff3c;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.55;
+      }
+      main {
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 56px 20px;
+      }
+      .eyebrow {
+        font-family: ui-monospace, 'JetBrains Mono', Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      .brand {
+        font-weight: 900;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .brand span {
+        font-family: ui-monospace, Menlo, monospace;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 1px solid #cad0c9;
+        font-weight: 400;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 28px;
+      }
+      h1 {
+        font-size: 34px;
+        line-height: 1.05;
+        margin: 10px 0 12px;
+        font-weight: 900;
+        letter-spacing: -0.5px;
+      }
+      p {
+        color: var(--soft);
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+      a.button {
+        display: inline-block;
+        background: var(--volt);
+        color: #1b2305;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 16px 32px;
+        border-radius: 10px;
+        text-decoration: none;
+        margin: 6px 0 18px;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0;
+      }
+      [hidden] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand">AMUX<span>PULSE</span></div>
+      <div class="card">
+        <div id="ok" hidden>
+          <div class="eyebrow">Continue</div>
+          <h1>Open AMUX Pulse.</h1>
+          <p>
+            Tap the button on the iPhone where AMUX Pulse is installed. It confirms your request and
+            opens the app.
+          </p>
+          <a id="go" class="button" href="#">Continue</a>
+          <p class="note">
+            If nothing opens, make sure you are on your iPhone and the app is installed. This link
+            works once and expires.
+          </p>
+        </div>
+        <div id="bad" hidden>
+          <div class="eyebrow">Link problem</div>
+          <h1>This link did not work.</h1>
+          <p>
+            It may be incomplete or already used. Ask for a new email in the app, or write to
+            martin@amux-pulse.com.
+          </p>
+        </div>
+      </div>
+    </main>
+    <script src="/auth/open/open.js"></script>
+    <script>
+      var target = window.AmuxAuthOpen.targetFromHash(window.location.hash)
+      if (target) {
+        document.getElementById('go').setAttribute('href', target)
+        document.getElementById('ok').hidden = false
+      } else {
+        document.getElementById('bad').hidden = false
+      }
+      // The address stays out of history and the page out of referrers.
+      if (window.history && window.history.replaceState)
+        window.history.replaceState(null, '', window.location.pathname)
+    </script>
+  </body>
+</html>

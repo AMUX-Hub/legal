@@ -32,8 +32,8 @@
   <!-- Published 23 September 2026. Controller details and processor list verified against the codebase and the production database on that date. Health types derived from
      HealthAuthorization.readTypes (ios/AMUXPulse/Health/HealthAuthorization.swift); AI fields from
      src/features/aiSurfaces/context/envelope.ts, src/features/recoveryCoach/lib/context.ts and the
-     deny-list in supabase/functions/recovery-coach/policy.ts (hasForbiddenContextKey). -->
-  <p class="updated">Updated: 26 September 2026 (previous version effective 25 September 2026)</p>
+     deny-list in supabase/functions/recovery-coach/policy.ts (hasForbiddenContextKey) and dossier.ts. AI inputs match src/features/aiSurfaces/consentCopy.ts. Reviewed against main 9 Nov 2026 (Oura removed: not in 1.0; Sentry retention 30 days). -->
+  <p class="updated">Updated: 9 November 2026 (previous version effective 26 September 2026)</p>
 
   <p>AMUX Pulse ("AMUX", "we") is a training and recovery app for iOS. This policy explains exactly what data the app collects, why, and what happens to it. Short version: your data powers your own training engine. We do not sell it, we do not show ads, and we do not use it for advertising or tracking of any kind.</p>
 
@@ -57,6 +57,10 @@
     <p><strong>Health data rules we hold ourselves to:</strong> health data is used only to compute your recovery, readiness, and training-load metrics. It is never used for advertising, marketing, or data mining, never sold, never shared with data brokers, and never stored in iCloud by us. You can revoke Health access at any time in iOS Settings → Privacy &amp; Security → Health.</p>
   </div>
 
+  <div class="card" id="health-data-choice">
+    <p><strong>Your health-data choice.</strong> When you set up AMUX Pulse you are asked separately, and the box starts empty, whether AMUX may use your health and workout data (heart rate, sleep, HRV and workouts) to plan and adjust your training. It is optional: you can use AMUX without it, and your plan then runs on your logged training alone. Without your consent AMUX reads no Apple Health data, stores no heart rate from a watch or chest strap, does not use WHOOP or Polar data, asks no safety questions about your health (you read a short safety notice instead, and runs stay at the Beginner level until you turn health data on and answer them), and sends no health information to the AI provider. You can change your mind at any time in <strong>Profile → Settings → Privacy &amp; data → Health data</strong>.</p>
+  </div>
+
   <h2 style="font-size:15px;">Location data</h2>
   <p>With your permission, the app uses precise location <strong>during runs</strong> to record your route, distance, and pace, including in the background while a tracked session is active so your run keeps recording with the screen locked. Routes are stored with your training history. Location is never collected outside of activity tracking.</p>
 
@@ -64,7 +68,7 @@
   <p>With your permission, the app connects to Bluetooth heart-rate sensors such as a chest strap, or a WHOOP band with Heart Rate Broadcast switched on, and records the heart rate they report during a session. This runs in the background while a session is active so the reading continues with the screen locked. Sensor data is stored with that session.</p>
 
   <h2 style="font-size:15px;">Apple Watch</h2>
-  <p>If you use the AMUX Pulse watch app, the watch records the session and uploads it to our servers itself, over Wi-Fi or cellular, without going through your iPhone. To do that, your iPhone issues the watch its own credential, and we store an identifier for that watch so you can see and revoke it. Revoking a watch stops it uploading.</p>
+  <p>If you use the AMUX Pulse watch app, the watch records the session and uploads it to our servers itself, over Wi-Fi or cellular, without going through your iPhone. To do that, your iPhone issues the watch its own credential, and we store an identifier for that watch so you can see and revoke it. Revoking a watch stops it uploading. Heart rate from the watch is stored only while you have given your health-data consent: our server checks your consent before it stores anything, and without it the workout is saved without heart rate.</p>
 
   <h2 style="font-size:15px;">Photos and camera</h2>
   <p>If you set a profile picture, the image you choose or take is uploaded to our storage and linked to your account. If you save a share card, the app writes that image to your photo library. The app never reads your photo library other than the picture you pick.</p>
@@ -86,16 +90,16 @@
   <table>
     <tr><th>Provider</th><th>Purpose</th><th>Data involved</th></tr>
     <tr><td>Supabase</td><td>Authentication and cloud database</td><td>Account data, training sessions, profile, health data you allow from Apple Health, and metrics derived from it</td></tr>
-    <tr><td>RevenueCat</td><td>Subscription management (App Store purchases)</td><td>Anonymous app-user ID, purchase history</td></tr>
+    <tr><td>RevenueCat</td><td>Subscription management (App Store purchases)</td><td>App-user ID (a pseudonymous ID, not your name or email), purchase history</td></tr>
     <tr><td>Whop</td><td>Optional web membership purchases and sign-in</td><td>Account email, membership status</td></tr>
     <tr><td>Anthropic (Claude)</td><td>AI Recovery Coach and AI training summaries</td><td>See AI section below</td></tr>
-    <tr><td>Resend</td><td>Sending you trial and renewal reminder emails, and sending each feedback report to our team's inbox</td><td>Your email address and your trial or renewal dates. For a feedback report: its content as described in section 1, your account email, and a link to any screenshot that stops working after one hour</td></tr>
-    <tr><td>Telegram</td><td>Notifying our team the moment a feedback report arrives</td><td>The first part of the report, its type, your app version and plan, and your reply email if you allowed a reply</td></tr>
-    <tr><td>Notion</td><td>Our internal list of feedback reports, where we track fixes</td><td>The report content as described in section 1, your account email, and a link to any screenshot that stops working after one hour</td></tr>
+    <tr><td>Resend</td><td>Sending you trial and renewal reminder emails, and sending each feedback report to our team's inbox</td><td>Your email address and your trial or renewal dates. For a feedback report: its content as described in section 1, your account id, your email address only if you allowed a reply, and a link to any screenshot that stops working after one hour</td></tr>
+    <tr><td>Telegram</td><td>Notifying our team the moment a feedback report arrives</td><td>Only the report's reference number and its type (bug, idea, question or other). Nothing you wrote, no email address and no screenshot</td></tr>
+    <tr><td>Notion</td><td>Our internal list of feedback reports, where we track fixes</td><td>Only the report's reference number, its type and the date it was sent. Nothing you wrote, no email address and no screenshot</td></tr>
     <tr><td>Expo</td><td>Delivering over-the-air app updates</td><td>Your app's version and update channel. No account data</td></tr>
     <tr><td>Polar</td><td>Optional Polar wearable connection</td><td>When you connect Polar, we receive your cardio fitness (VO2 max), maximum and resting heart rate, aerobic and anaerobic thresholds, height, weight, and your last 30 days of workouts. We send Polar an internal AMUX account identifier so it knows which account to sync. Disconnecting deletes the stored data and the registration on Polar's side.</td></tr>
-    <tr><td>Oura and WHOOP</td><td>Optional wearable connections</td><td>When you connect one, we receive the recovery, sleep and workout metrics that provider exposes. Disconnecting deletes the stored data.</td></tr>
-    <tr><td>Sentry</td><td>Crash and performance monitoring</td><td>Crash and performance data, linked to your account ID and email address. Sign-in codes, tokens, passwords and API keys are stripped before anything is sent, and performance tracing is off.</td></tr>
+    <tr><td>WHOOP</td><td>Optional wearable connection</td><td>When you connect it, we receive the recovery, sleep and workout metrics that WHOOP exposes. Disconnecting deletes the stored data.</td></tr>
+    <tr><td>Sentry</td><td>Crash and performance monitoring</td><td>Crash and performance data, linked to your account ID only (never your email address, name or IP address). Health readings such as heart rate and sleep are stripped before anything is sent. Sign-in codes, tokens, passwords and API keys are stripped before anything is sent, and performance tracing is off.</td></tr>
     <tr><td>Mapbox</td><td>Map tiles, snapping your route to paths, and the watch route thumbnail</td><td>Map tile requests, and your GPS coordinates with their timestamps while a run is recording and when it is saved</td></tr>
   </table>
   <p>Each provider processes data only on our instructions to run the service. None of them may use your data for their own advertising.</p>
@@ -104,29 +108,34 @@
   <p>AI is off until you turn it on. Nothing is sent to an AI provider until you accept the AI consent notice in the app. You can see, grant or withdraw that consent at any time in <strong>Profile → Settings → Privacy &amp; data → AI answers</strong>, and also from the coach's info panel. Withdrawing takes effect immediately for the coach and every AI card.</p>
   <p>Once you opt in, these features send data to <strong>Anthropic</strong> (Claude), acting as our data processor:</p>
   <ul>
-    <li><strong>Recovery Coach</strong>: the chat, when you send a message</li>
+    <li><strong>Recovery Coach</strong>: the training coach chat, when you send a message. Free accounts can send 5 coach messages a week</li>
     <li><strong>Weekly review</strong>: a read-back of your training week on the Data tab</li>
     <li><strong>Pre-session briefing</strong>: a short note before a planned session</li>
     <li><strong>Calibration coach</strong>: guidance while your baselines are still being learned</li>
     <li><strong>Post-race debrief</strong>: a review after a race day</li>
   </ul>
-  <p><strong>What is sent:</strong> a compact summary built on your phone, not your raw data. Depending on the feature it contains:</p>
+  <p><strong>What is sent:</strong> a compact summary built on your phone, not your raw data. Depending on the feature it contains the items below. <strong>Health items (readiness, heart rate variability, sleep, VO2 max, heart rate, post-workout check-in flags, safety flags and resting or threshold heart rate) are sent only while you have given your health-data consent.</strong> Without it they are left out (so are runs imported from other apps and your dietary restrictions), the coach does not receive earlier messages of the conversation, and the plan, training load (including ACWR), body weight and your question are still used. The whole summary has a size limit, about 16,000 characters for the athlete summary:</p>
   <ul>
-    <li>your question (coach chat only)</li>
+    <li><strong>your question and the conversation (coach chat only):</strong> what you type, up to 600 characters per message, and up to your last six messages and the coach's answers so it can follow up (sent only while health data is on)</li>
     <li><strong>readiness:</strong> your readiness score, its band and the main reasons behind it</li>
     <li><strong>training load:</strong> acute and chronic load and your acute:chronic workload ratio (ACWR)</li>
-    <li><strong>heart rate variability:</strong> latest value, 7-day average, change and trend</li>
-    <li><strong>sleep:</strong> hours, efficiency, short nights, last bedtime and trend</li>
-    <li><strong>recent sessions:</strong> totals for the last 30 days and short summaries of up to eight recent sessions (date, type, title, duration, distance, average and maximum heart rate, load, and post-workout check-in flags such as soreness)</li>
+    <li><strong>heart rate variability:</strong> latest value, 7-day average, change, trend and daily values for the last 14 days</li>
+    <li><strong>sleep:</strong> hours, efficiency, short nights, last bedtime, trend and hours for the last 14 nights</li>
+    <li><strong>vitals:</strong> resting heart rate, respiratory rate, blood oxygen and wrist temperature compared with your usual</li>
+    <li><strong>recent sessions:</strong> your sessions from the last 14 days (date, type, title, duration, distance, pace, average and maximum heart rate, load, effort rating and post-workout check-in flags such as soreness) and weekly totals for the last 4 weeks</li>
+    <li><strong>strength set logs:</strong> top working set, estimated one-rep max and its 8-week change for your main lifts</li>
+    <li><strong>run analysis:</strong> first and second half pace, heart-rate drift and aerobic decoupling of key runs</li>
+    <li><strong>check-ins:</strong> post-session effort ratings and your readiness check-in, numbers only</li>
     <li><strong>body and physiology:</strong> body weight rounded to a whole kilogram, resting and threshold heart rate, threshold pace</li>
     <li><strong>fitness estimates:</strong> your VO2 max estimate, its range and trend, VDOT, race time predictions, and recent 5K and 10K times or test distances</li>
     <li><strong>race results</strong> (post-race debrief): distance, time, pace, per-kilometre splits, pace fade, heart-rate drift, effort rating (RPE), and predicted versus actual time</li>
     <li><strong>training profile:</strong> the goal, level, weekly availability and recovery priorities you set, and safety flags from your questionnaire (for example a recent injury, medication that affects heart rate, or a medical clearance flag)</li>
     <li><strong>nutrition preferences:</strong> diet style and dietary restrictions</li>
-    <li><strong>your plan:</strong> program, week, race phase and days to race, planned sessions and their targets (pace, zone, exercises), and your progress this week</li>
+    <li><strong>your plan:</strong> program, week, race phase and days to race, the next 7 days of planned sessions and their targets (pace, zone, exercises), your progress this week and the training engine's decision</li>
     <li><strong>data sources:</strong> which sources are connected (for example Apple Health) and which data is missing</li>
   </ul>
-  <p><strong>What is never sent:</strong> your name, your email address, your date of birth, GPS routes or location coordinates, raw heart-rate samples, raw Apple Health history, or notes you write.</p>
+  <p><strong>What is never sent:</strong> your name, your email address, your date of birth, GPS routes or location coordinates, raw heart-rate samples, raw Apple Health history, or your free-form session notes. Our server rejects a request that carries any of these as a data field.</p>
+  <p><strong>What you type is sent as you wrote it.</strong> Our server checks the fields of the summary, but it cannot read and filter the questions you type to the coach or its earlier answers in the conversation. Do not type anything into the coach that you do not want sent to Anthropic.</p>
   <p>Anthropic does <strong>not</strong> train models on this data. Anthropic may retain API inputs for up to 30 days, solely for abuse monitoring, after which they are deleted. You can use the entire app without ever turning AI on.</p>
 
   <h2>4. No tracking, no ads</h2>
@@ -137,6 +146,7 @@
     <li><strong>Export:</strong> download your training sessions any time in the app: Settings → Privacy &amp; data → Export data.</li>
     <li><strong>Delete:</strong> permanently delete your account and all cloud data in the app: Settings → Privacy &amp; data → Delete account. Deletion cascades through every server-side record (profile, sessions, entitlements) and cannot be undone.</li>
     <li>Data on your device (and anything you wrote to Apple Health) stays under your control and can be removed by deleting the app or editing Apple Health.</li>
+    <li><strong>Saved routes:</strong> your saved route shapes exist only on your phone. After you sign out they stay on this phone for up to 90 days, so they come back when the same account signs in again. Another account on the phone never sees them. To remove them, delete them in Saved routes before you sign out, or delete your account from this phone.</li>
     <li>Deleting your account does not cancel an active Apple or Whop subscription. Cancel those with Apple (Settings → Apple ID → Subscriptions) or Whop directly.</li>
   </ul>
 
@@ -169,13 +179,22 @@
     <tr><td>Crash and performance diagnostics</td><td>To find and fix faults</td><td>Our legitimate interest in a working app, Article 6(1)(f)</td></tr>
     <tr><td>Feedback and support reports you send</td><td>To investigate what you reported, improve the app, and reply if you asked us to</td><td>Our legitimate interest in answering you and fixing the app, Article 6(1)(f). The reply email only if you turn on "You can email me about this", Article 6(1)(a)</td></tr>
   </table>
-  <p>Health data is <strong>special category data</strong> under Article 9. We process it only because you explicitly agreed, and only to compute your own training metrics. If you withdraw that consent, we stop.</p>
+  <p>Health data is <strong>special category data</strong> under Article 9. We process it only because you explicitly agreed, and only to compute your own training metrics. If you withdraw that consent, we stop. Exactly what that means:</p>
+  <ul>
+    <li>AMUX stops reading health data from Apple Health, your watch and chest strap, and WHOOP and Polar (their connection is removed).</li>
+    <li>We delete the health data we hold on your phone and in our cloud, and the coach conversation is cleared.</li>
+    <li>Your sessions stay, but without heart rate and your check-in answers (effort, pain, readiness). The set-by-set effort you logged is part of your training log and stays, and so does your weight.</li>
+    <li>Past weekly plan decisions stay. Training load figures are re-estimated without how you felt, so your plan history keeps making sense. We do not delete your training records.</li>
+    <li>Your plan keeps working without readiness, and runs stay at the Beginner level until you turn health data back on and answer the safety questions again.</li>
+    <li>Nothing is sent to the AI provider from your health data, and the server refuses to keep heart rate from your watch.</li>
+    <li>Apple Health and your watch keep their own records; deleting those is done in Apple's apps.</li>
+  </ul>
 
   <h2 style="font-size:15px;">How long we keep it</h2>
   <ul>
     <li><strong>Your account, training history, and health metrics:</strong> until you delete your account. We do not expire your training history while your account is open, because its value is that it is long.</li>
     <li><strong>Anything sent to the AI provider:</strong> up to 30 days at Anthropic for abuse monitoring, then deleted. Not used to train models.</li>
-    <li><strong>Crash and performance diagnostics:</strong> 90 days, then deleted automatically. Diagnostics are processed in the European Union.</li>
+    <li><strong>Crash and performance diagnostics:</strong> 30 days, then deleted automatically. Diagnostics are processed in the European Union.</li>
     <li><strong>Feedback reports:</strong> kept while they help us fix or improve the app. When you delete your account, we delete your screenshots and the reply email you gave, and the report is no longer linked to your account. Copies already delivered to our team's inbox, team chat and issue list are not removed automatically; write to us and we will delete them.</li>
     <li><strong>After you delete your account:</strong> server-side records are removed immediately. Backups roll off within 30 days.</li>
   </ul>
@@ -188,7 +207,7 @@
     <li><strong>Delete it</strong> (erasure). Also built in: Settings, then Privacy &amp; data, then Delete account.</li>
     <li><strong>Get a portable copy</strong> (portability) in a machine-readable format.</li>
     <li><strong>Restrict or object to</strong> processing, including our legitimate-interest use of diagnostics.</li>
-    <li><strong>Withdraw consent</strong> at any time, for Health, location, or AI, separately. Withdrawing is as easy as giving it, and it does not make our earlier processing unlawful.</li>
+    <li><strong>Withdraw consent</strong> at any time, for Health, location, or AI, separately (Health and AI in Profile → Settings → Privacy &amp; data). Withdrawing is as easy as giving it, and it does not make our earlier processing unlawful.</li>
   </ul>
 
   <h2 style="font-size:15px;">If you are unhappy with how we handled it</h2>
@@ -198,7 +217,7 @@
   <p>Your account and training data are stored in the European Union, in Supabase's Paris region. Crash diagnostics are processed in the European Union. Some of our other providers process data outside the European Union, mainly in the United States: <strong>Anthropic</strong> (only if you turn AI on), <strong>RevenueCat</strong>, <strong>Mapbox</strong>, <strong>Resend</strong>, <strong>Whop</strong>, <strong>Expo</strong>, and, for feedback reports only, <strong>Telegram</strong> and <strong>Notion</strong>. Those transfers rely on the European Commission's Standard Contractual Clauses, or on the EU-US Data Privacy Framework where that provider is certified under it. You can ask us for a copy of the safeguards.</p>
 
   <h2 style="font-size:15px;">Data we receive about you from someone else</h2>
-  <p>If you connect Polar, Oura or WHOOP, we receive fitness and recovery data about you from that provider, as listed in the provider table above. You start that by connecting the account, and you stop it by disconnecting.</p>
+  <p>If you connect Polar or WHOOP, we receive fitness and recovery data about you from that provider, as listed in the provider table above. You start that by connecting the account, and you stop it by disconnecting.</p>
 
   <h2 style="font-size:15px;">Automated decisions</h2>
   <p>The app computes scores and adapts your plan automatically, and the AI features generate text. None of this produces a legal effect or a similarly significant effect on you within the meaning of Article 22, and no human-reviewed decision is made about you. The guidance is training guidance, and it is not medical advice.</p>
